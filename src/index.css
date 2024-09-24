@@ -1,3 +1,34 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+@layer components{
+ 
+  .max-container{
+    max-width: 1610px;
+    margin: 0 auto;
+  }
+}
+
+@layer utilities {
+ 
+  .input{
+    @apply border px-4 py-1 rounded bg-gray-100 outline-none  max-w-xs text-lg focus:border-green-700
+  }
+
+  .top-section{
+    @apply flex flex-wrap max-[595px]:flex-col gap-4 justify-center items-center p-2 bg-red-400 max-w-2xl m-auto rounded border border-red-700
+  }
+
+  .button{
+    @apply text-white font-medium transition-all border border-slate-400 rounded px-3 py-1 shadow-md hover:bg-slate-200 
+  }
+}
