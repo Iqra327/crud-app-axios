@@ -1,13 +1,21 @@
 import { useEffect, useState } from "react";
 import { getPost } from "../api/PostApi";
 import PostCard from "./PostCard";
+import Form from "./Form";
 
 const Posts = () => {
   const [data, setData] = useState([]);
   console.log(data);
   const getPostData =async () => {
-    const res = await getPost();
-    setData(res.data);
+    
+    const savedPosts = localStorage.getItem('posts');
+    if(savedPosts){
+      setData(JSON.parse(savedPosts));
+    }
+    else{
+      const res = await getPost();
+      setData(res.data);
+    }
   }
 
   useEffect(() => {
@@ -15,7 +23,10 @@ const Posts = () => {
   }, []);
 
   return (
-      <PostCard data={data}/>
+    <section className="flex flex-col gap-12" >
+      <Form data={data} setData={setData}/>
+      <PostCard data={data} setData={setData}/>
+    </section>
   )
 }
 

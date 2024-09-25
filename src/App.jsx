@@ -1,20 +1,12 @@
 import Button from "./components/Button";
+import Form from "./components/Form";
 import Input from "./components/Input";
 import Posts from "./components/Posts";
 
 const App = () => {
   return (
-    <main className="p-4 flex flex-col gap-5">
-      <section className="top-section">
-        <div className="flex gap-4 max-[595px]:flex-col bg-red-400">
-          <Input />
-          <Input />
-        </div>
-        <Button value="Add" />
-      </section>
-      <section className="flex max-container">
+    <main className="p-4 flex-col gap-5 flex max-container">
         <Posts />
-      </section>
     </main>
   );
 };

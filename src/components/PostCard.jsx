@@ -1,7 +1,7 @@
 import React from 'react'
 import Button from './Button';
 
-const PostCard = ({data}) => {
+const PostCard = ({data, setData}) => {
   console.log(data);
   return (
     <section className='grid gap-5 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1'>
@@ -11,7 +11,7 @@ const PostCard = ({data}) => {
             return (
             <div 
               key={id} 
-              className='border-l-2 border-red-500 bg-slate-300 rounded shadow-sm text-lg p-3 leading-relaxed shadow-slate-800 flex flex-col gap-4'
+              className='border-l-2 border-red-500 bg-slate-300 rounded shadow-sm text-lg p-3 leading-relaxed shadow-slate-800 flex flex-col gap-4' 
             >
               <div className='flex-grow'>
                 <p>{id}.</p>
@@ -27,11 +27,13 @@ const PostCard = ({data}) => {
                 </p>
               </div>
               <div className='flex gap-3 justify-end'>
-                <Button value='Update'/>
+                <Button value='Update' setData={setData} data={data}/>
                 <Button  
                   value='Delete' 
                   className='bg-red-500'
                   id={id}
+                  setData={setData} 
+                  data={data}
                 />
               </div>
             </div>

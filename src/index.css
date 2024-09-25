@@ -25,7 +25,7 @@
   }
 
   .top-section{
-    @apply flex flex-wrap max-[595px]:flex-col gap-4 justify-center items-center p-2 bg-red-400 max-w-2xl m-auto rounded border border-red-700
+    @apply flex flex-wrap max-[612px]:flex-col gap-4 justify-center items-center p-2 bg-red-400 max-w-2xl m-auto rounded border border-red-700
   }
 
   .button{

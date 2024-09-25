@@ -1,13 +1,29 @@
 import React from 'react'
 import { deletePost } from '../api/PostApi'
 
-const Button = ({value, className, id}) => {
+const Button = ({value, className, id, data, setData}) => {
 
   const handleDeletePost = async (id) => {
-   const res =  await deletePost(id);
-   console.log(res.data);
-  }
-  
+    
+    try {
+     const res =  await deletePost(id);  
+    
+     if(res.status === 200){
+      const newUpdatedData = data.filter((curEle) => {
+        return curEle.id !== id 
+      });
+      
+      localStorage.setItem('posts', JSON.stringify(newUpdatedData));
+      
+      setData(newUpdatedData);
+     }
+    
+    } catch (error) {
+     console.log(error);
+    }
+    
+   }
+
   return (
     <div>
       <button 
