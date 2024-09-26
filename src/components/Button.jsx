@@ -1,7 +1,7 @@
 import React from 'react'
 import { deletePost } from '../api/PostApi'
 
-const Button = ({value, className, id, data, setData}) => {
+const Button = ({value, className, id, data, setData, curEle, handleUpdatedPost}) => {
 
   const handleDeletePost = async (id) => {
     
@@ -21,15 +21,20 @@ const Button = ({value, className, id, data, setData}) => {
     } catch (error) {
      console.log(error);
     }
-    
-   }
+   };
+
 
   return (
     <div>
       <button 
         className= {`button ${className ? `${className}` : 'bg-green-700' } 
         ${className ? 'hover:text-red-500' : 'hover:text-green-700' }`}
-        onClick={() => handleDeletePost(id)}
+        onClick={() => { 
+          if(id) handleDeletePost(id); 
+          if(handleUpdatedPost) handleUpdatedPost(curEle);
+          }
+        }
+        type='submit'
       >
         {value}
       </button>
